@@ -12,13 +12,14 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
+require('dotenv').config();
 
-const mongoDB = "mongodb+srv://Mauriculus2:gV0Nvbg3iIEm939Y@cluster0.bmhkimy.mongodb.net/?appName=Cluster0";
+const mongoDB = process.env.MONGO_URI;
 
 async function connectMongoose() {
   await mongoose.connect(mongoDB);
